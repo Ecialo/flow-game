@@ -1,0 +1,130 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 1a44ec36afbc531a1a06edfc655eec2a32d687c8ca429c7c3d888d8dec43ec63
+
+name:           flow-game
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/flow-game#readme>
+homepage:       https://github.com/githubuser/flow-game#readme
+bug-reports:    https://github.com/githubuser/flow-game/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+data-files:
+    assets/unispace.ttf
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/flow-game
+
+library
+  exposed-modules:
+      Lib
+      Lib.Pool
+  other-modules:
+      Paths_flow_game
+  hs-source-dirs:
+      src
+  default-extensions: BangPatterns OverloadedStrings
+  ghc-options: -fwarn-tabs -fwarn-missing-signatures -fwarn-name-shadowing -fwarn-incomplete-patterns
+  build-depends:
+      algebraic-graphs
+    , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , containers
+    , formatting
+    , mtl
+    , reflex
+    , text
+    , vector
+  default-language: Haskell2010
+
+executable flow-game-exe
+  main-is: Main.hs
+  other-modules:
+      Client.Types
+      Client.Widget.Button
+      Client.Widget.Common
+      Client.Widget.GameMap
+      Paths_flow_game
+  hs-source-dirs:
+      client
+  default-extensions: FlexibleContexts ConstraintKinds
+  ghc-options: -fwarn-tabs -fwarn-missing-signatures -fwarn-name-shadowing -fwarn-incomplete-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      algebraic-graphs
+    , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , containers
+    , flow-game
+    , formatting
+    , mtl
+    , reflex
+    , reflex-sdl2
+    , sdl2
+    , sdl2-gfx
+    , sdl2-ttf
+    , text
+    , vector
+  default-language: Haskell2010
+
+executable server-exe
+  main-is: Server.hs
+  other-modules:
+      Paths_flow_game
+  hs-source-dirs:
+      server
+  ghc-options: -fwarn-tabs -fwarn-missing-signatures -fwarn-name-shadowing -fwarn-incomplete-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      algebraic-graphs
+    , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , containers
+    , flow-game
+    , formatting
+    , mtl
+    , reflex
+    , text
+    , vector
+  default-language: Haskell2010
+
+test-suite flow-game-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_flow_game
+  hs-source-dirs:
+      test
+  ghc-options: -fwarn-tabs -fwarn-missing-signatures -fwarn-name-shadowing -fwarn-incomplete-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      algebraic-graphs
+    , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , conduit-extra
+    , containers
+    , flow-game
+    , formatting
+    , mtl
+    , reflex
+    , tasty
+    , tasty-hunit
+    , text
+    , vector
+  default-language: Haskell2010

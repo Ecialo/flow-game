@@ -1,0 +1,91 @@
+name:                flow-game
+version:             0.1.0.0
+github:              "githubuser/flow-game"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2020 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+data-files:
+- assets/**/*
+
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/flow-game#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- formatting
+- bytestring
+- containers
+- vector
+- mtl
+- conduit
+- conduit-extra
+- reflex
+- algebraic-graphs
+
+ghc-options:
+  -fwarn-tabs
+  -fwarn-missing-signatures
+  -fwarn-name-shadowing
+  -fwarn-incomplete-patterns
+
+library:
+  source-dirs: src
+  default-extensions:
+    - BangPatterns
+    - OverloadedStrings
+
+executables:
+
+  flow-game-exe:
+    main:                Main.hs
+    source-dirs:         client
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - flow-game
+    - reflex-sdl2
+    - sdl2
+    - sdl2-gfx
+    - sdl2-ttf
+    default-extensions:
+      - FlexibleContexts
+      - ConstraintKinds
+
+  server-exe:
+    main: Server.hs
+    source-dirs: server
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - flow-game
+
+tests:
+  flow-game-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - flow-game
+    - tasty
+    - tasty-hunit
